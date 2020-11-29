@@ -41,8 +41,8 @@ choco install dacfx-18
 choco install datagrip
 choco install dependencywalker
 choco install docker-desktop
-choco install dotnetcore
-choco install dotnetcore-sdk
+choco install dotnetcore-3.1-sdk
+choco install dotnet-5.0-sdk
 choco install eclipse
 choco install eksctl
 choco install evernote
@@ -150,18 +150,16 @@ choco install visualstudio2019-workload-visualstudioextension
 choco install visualstudio2019-workload-webbuildtools
 
 # Create environment variables
-[environment]::SetEnvironmentVariable("CASSANDRA_HOME","C:\Cassandra","Machine")
-[environment]::SetEnvironmentVariable("CASSANDRA_BIN","%CASSANDRA_HOME%\bin","Machine")
-[environment]::SetEnvironmentVariable("CodeCoverage","C:\Program Files (x86)\Microsoft Visual Studio\2017\TestAgent\Team Tools\Dynamic Code Coverage Tools","Machine")
-[environment]::SetEnvironmentVariable("JAVA_HOME","C:\Program Files\Java\jdk1.8.0_201\","Machine")
+[environment]::SetEnvironmentVariable("CodeCoverage","C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Team Tools\Dynamic Code Coverage Tools","Machine")
+[environment]::SetEnvironmentVariable("JAVA_HOME","C:\Program Files\Java\jdk-15.0.1\","Machine")
 [environment]::SetEnvironmentVariable("MSBUILD_HOME","C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin","Machine")
 [environment]::SetEnvironmentVariable("OpenCover","C:\ProgramData\chocolatey\lib\opencover.portable\tools","Machine")
 [environment]::SetEnvironmentVariable("ReportGenerator","C:\ProgramData\chocolatey\lib\reportgenerator.portable\tools","Machine")
 [environment]::SetEnvironmentVariable("SSHAGENT_HOME","C:\WINDOWS\system32\OpenSSH","Machine")
-[environment]::SetEnvironmentVariable("VSTest","C:\Program Files (x86)\Microsoft Visual Studio\2017\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow","Machine")
+[environment]::SetEnvironmentVariable("VSTest","C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow","Machine")
 
 $oldpath = [environment]::GetEnvironmentVariable("PATH", "Machine")
-$newpath = $oldpath + ";%CASSANDRA_BIN%;%CASSANDRA_HOME%;%CodeCoverage%;%JAVA_HOME%;%MSBUILD_HOME%;%OpenCover%;%ReportGenerator%;%VSTest%"
+$newpath = $oldpath + ";%CodeCoverage%;%JAVA_HOME%;%MSBUILD_HOME%;%OpenCover%;%ReportGenerator%;%VSTest%"
 [environment]::SetEnvironmentVariable("PATH", "$newpath", "Machine")
 
 # Install AWS ECS Tools
